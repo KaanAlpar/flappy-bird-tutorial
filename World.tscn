@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/textures/background.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/ObstacleSpawner.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -10,8 +11,11 @@
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 115, 427 )
+[node name="ObstacleSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 800, 0 )
 
 [node name="Ground" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 686 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 115, 427 )
