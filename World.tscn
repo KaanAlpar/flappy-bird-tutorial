@@ -24,3 +24,7 @@ position = Vector2( 0, 686 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 115, 427 )
+[connection signal="body_entered" from="Ground/DeathZone" to="." method="_on_DeathZone_body_entered"]
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
+
+[editable path="Ground"]

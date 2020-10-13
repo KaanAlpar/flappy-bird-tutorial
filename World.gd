@@ -2,6 +2,7 @@ extends Node2D
 
 onready var hud = $HUD
 onready var obstacle_spawner = $ObstacleSpawner
+onready var ground = $Ground
 
 var score = 0 setget set_score
 
@@ -22,3 +23,16 @@ func set_score(new_score):
 
 func _on_obstacle_created(obs):
 	obs.connect("score", self, "player_score")
+
+func _on_DeathZone_body_entered(body):
+	if body is Player:
+		if body.has_method("die"):
+			body.die()
+
+func _on_Player_died():
+	game_over()
+
+func game_over():
+	obstacle_spawner.stop()
+	ground.get_node("AnimationPlayer").stop()
+	get_tree().call_group("obstacles", "set_physics_process", false)
