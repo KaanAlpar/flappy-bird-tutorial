@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ui/flappyfont_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/flappyfont_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/HUD.gd" type="Script" id=2]
+
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
