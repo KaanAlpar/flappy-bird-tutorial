@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://environment/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/point.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25, 110 )
+extents = Vector2( 25, 572 )
 
 [node name="Obstacle" type="Node2D" groups=[
 "obstacles",
@@ -23,6 +24,9 @@ rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
 shape = SubResource( 1 )
+
+[node name="Point" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="body_entered" from="Wall" to="." method="_on_Wall_body_entered"]
 [connection signal="body_entered" from="Wall2" to="." method="_on_Wall_body_entered"]
 [connection signal="body_exited" from="ScoreArea" to="." method="_on_ScoreArea_body_exited"]
