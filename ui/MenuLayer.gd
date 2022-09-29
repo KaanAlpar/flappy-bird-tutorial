@@ -11,7 +11,7 @@ onready var game_over_menu = $GameOverMenu
 var game_started = false
 
 func _input(event):
-	if event.is_action_pressed("flap") && !game_started:
+	if (event.is_action_pressed("flap") || event is InputEventScreenTouch) && !game_started:
 		emit_signal("start_game")
 		tween.interpolate_property(start_message, "modulate:a", 1, 0, 0.5)
 		tween.start()
