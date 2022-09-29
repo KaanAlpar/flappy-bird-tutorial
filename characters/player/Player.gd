@@ -14,8 +14,18 @@ onready var wing = $Wing
 var started = false
 var alive = true
 
+var touch_position = Vector2()
+
+func _input(event):
+	if !event is InputEventScreenTouch:
+		return
+	if event.pressed:
+		touch_position = event.position
+	else:
+		touch_position = Vector2()
+
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("flap") && alive:
+	if (Input.is_action_just_pressed("flap") || touch_position != Vector2()) && alive:
 		if !started:
 			start()
 		flap()
